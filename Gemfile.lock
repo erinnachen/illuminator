@@ -220,6 +220,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   factory_girl_rails (~> 4.0)
+  faraday
   figaro
   haml-rails
   jbuilder (~> 2.0)
