@@ -1,21 +1,21 @@
 .page-content.container
   .columns
     .column.one-fourth
-      = image_tag "#{@user_data.avatar}",
+      = image_tag "#{@github_user.avatar}",
                   class: "user-avatar rounded-2 user-page",
-                  alt: "@#{@user_data.username}"
+                  alt: "@#{@github_user.username}"
       %h1.card-names.my-3
-        .card-fullname= @user_data.name
-        .card-username= @user_data.username
+        .card-fullname= @github_user.name
+        .card-username= @github_user.username
       .card-stats.border-top.border-bottom.border-gray-light.mb-3.py-3
-        %a.card-stat{ href: "/#{@user_data.username}/followers" }
-          %strong.card-stat-count.d-block=@user_data.followers
+        %a.card-stat{ href: "/#{@github_user.username}/followers" }
+          %strong.card-stat-count.d-block=@github_user.followers
           %span.text-muted Followers
-        %a.card-stat{ href: "/stars/#{@user_data.username}" }
+        %a.card-stat{ href: "/stars/#{@github_user.username}" }
           %strong.card-stat-count.d-block 0
           %span.text-muted Starred
-        %a.card-stat{ href: "/#{@user_data.username}/following" }
-          %strong.card-stat-count.d-block=@user_data.following
+        %a.card-stat{ href: "/#{@github_user.username}/following" }
+          %strong.card-stat-count.d-block=@github_user.following
           %span.text-muted Following
       - if @orgs.count > 0
         .clearfix

@@ -10,8 +10,7 @@ class Repo
     @updated_at           = DateTime.parse(data.updated_at)
   end
 
-  def self.parse_from_data(response)
-    data = JSON.parse(response.body, object_class: OpenStruct)
+  def self.parse_from_data(data)
     data.map do |repo_data|
       Repo.new(repo_data)
     end
