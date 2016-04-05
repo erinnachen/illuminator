@@ -1,1 +1,17 @@
-%h1= @username
+.page-content.container
+  .columns
+    .column.one-fourth
+      = image_tag "#{@user_data.avatar}", class: "user-avatar rounded-2 user-page", alt: "@#{@user_data.username}"
+      %h1.card-names.my-3
+        .card-fullname= @user_data.name
+        .card-username= @user_data.username
+      .card-stats.border-top.border-bottom.border-gray-light.mb-3.py-3
+        %a.card-stat{href: "/#{@user_data.username}/followers"}
+          %strong.card-stat-count.d-block=@user_data.followers
+          %span.text-muted Followers
+        %a.card-stat{href: "/stars/#{@user_data.username}"}
+          %strong.card-stat-count.d-block 0
+          %span.text-muted Followers
+        %a.card-stat{href: "/#{@user_data.username}/following"}
+          %strong.card-stat-count.d-block=@user_data.following
+          %span.text-muted Following

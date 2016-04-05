@@ -14,6 +14,7 @@ gem 'rails_12factor', group: :production
 gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'faraday'
 
 group :development, :test do
   gem 'pry'
