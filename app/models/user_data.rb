@@ -1,4 +1,5 @@
-require 'json'
+require "json"
+
 class UserData
   attr_reader :username, :avatar, :name, :location, :followers, :following
   def initialize(params)

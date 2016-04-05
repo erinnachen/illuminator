@@ -1,26 +1,30 @@
 .columns {
-  margin-right: -10px;
   margin-left: -10px;
+  margin-right: -10px;
 }
 
 .columns::before {
-  display: table;
   content: "";
+  display: table;
 }
 .columns::after {
-  display: table;
   clear: both;
   content: "";
+  display: table;
 }
 
 .column {
   float: left;
-  padding-right: 10px;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 .one-fourth {
   width: 25%;
+}
+
+.three-fourths {
+  width: 75%;
 }
 
 .card-names {
@@ -33,27 +37,27 @@
 }
 
 .card-fullname {
+  display: block;
   font-size: 26px;
   line-height: 30px;
-  display: block;
 }
 
 .card-username {
+  color: #666;
+  display: block;
   font-size: 20px;
   font-style: normal;
   font-weight: 300;
   line-height: 24px;
-  color: #666;
-  display: block;
 }
 
 .user-avatar {
-  display: inline-block;
-  overflow: hidden;
-  line-height: 1;
-  vertical-align: middle;
   border-radius: 3px;
+  display: inline-block;
+  line-height: 1;
+  overflow: hidden;
   position: relative;
+  vertical-align: middle;
 }
 
 .rounded-2 {
@@ -63,8 +67,8 @@
 img.user-page {
   border: 0;
   height: 230px;
-  width: 230px;
   text-align: center;
+  width: 230px;
 }
 
 .card-stats {
@@ -73,14 +77,14 @@ img.user-page {
 }
 
 .card-stats::before {
-  display: table;
   content: "";
+  display: table;
 }
 
 .card-stats::after {
-  display: table;
   clear: both;
   content: "";
+  display: table;
 }
 
 .py-3 {
@@ -106,9 +110,9 @@ img.user-page {
 
 .card-stat {
   float: left;
-  width: 33.333%;
   font-size: 11px;
   text-transform: capitalize;
+  width: 33.333%;
 }
 
 a {
@@ -135,4 +139,33 @@ a {
 a:hover, a:focus {
   color: #23527c;
   text-decoration: none;
+}
+
+.tabnav {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.tabnav-tabs {
+  margin-bottom: -1px;
+}
+
+.tabnav-tab {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  color: #666;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.tabnav-tab.selected {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+  border-radius: 3px 3px 0 0;
 }
