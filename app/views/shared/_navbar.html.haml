@@ -8,6 +8,11 @@
       - unless current_user
         = link_to "Sign in with Github", github_login_path, class: "button btn btn-success navbar-btn", type:"button"
       - else
-        %li.navbar-text
-          Signed in as
-          = "#{current_user.name} (#{current_user.nickname})"
+        %li.dropdown
+          %a.dropdown-toggle{href:"#", "data-toggle":"dropdown", role:"button",  "aria-haspopup": "true", "aria-expanded":"false"}
+            =image_tag "#{current_user.avatar}", class: "avatar", alt: "@#{current_user.nickname}"
+            %span.caret
+          %ul.dropdown-menu
+            %li="Signed in as #{current_user.nickname}"
+            %li.divider{role:"separator"}
+            %li= link_to "Sign out", logout_path
