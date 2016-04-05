@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @username = params[:username]
+    @username = params[:username] || "Guest"
   end
 end

@@ -12,6 +12,8 @@ gem 'figaro'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'haml-rails'
+gem 'omniauth'
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'pry'
