@@ -11,7 +11,6 @@ RSpec.feature "user logsout" do
     click_link "Sign out"
 
     expect(current_path).to eq "/"
-    save_and_open_page
     expect(page).to_not have_css('img[alt="@worace"]')
     expect(page).to_not have_css('img[src="https://avatars1.githubusercontent.com/u/1227440"]')
     expect(page).to_not have_content("Signed in as worace")
