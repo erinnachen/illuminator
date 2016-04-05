@@ -169,3 +169,45 @@ a:hover, a:focus {
   border-color: #ddd;
   border-radius: 3px 3px 0 0;
 }
+
+.clearfix {
+  width: 230px;
+}
+
+.clearfix h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.clearfix::before {
+  display: table;
+  content: "";
+}
+
+.clearfix::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.org-avatar {
+  border-radius: 3px;
+  display: inline-block;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  height: 42px;
+  width: 42px;
+}
+
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+  height: 16px;
+  width: 12px;
+  padding-right: 2px;
+}
