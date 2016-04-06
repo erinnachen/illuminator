@@ -2,33 +2,23 @@ require "json"
 
 class GithubUser
   attr_reader :username, :avatar, :name, :location, :followers, :following
+
   def self.service
     UserService.new
   end
 
-  def initialize(params)
-    @username   = params[:username]
-    @avatar     = params[:avatar]
-    @name       = params[:name]
-    @location   = params[:location]
-    @followers  = params[:followers]
-    @following  = params[:following]
-  end
-
-  def self.build_user(data)
-    parsed = {}
-    parsed[:username]   = data.login
-    parsed[:avatar]     = data.avatar_url
-    parsed[:name]       = data.name
-    parsed[:location]   = data.location
-    parsed[:followers]  = data.followers
-    parsed[:following]  = data.following
-    GithubUser.new(parsed)
+  def initialize(data)
+    @username   = data[:login]
+    @avatar     = data[:avatar_url]
+    @name       = data[:name]
+    @location   = data[:location]
+    @followers  = data[:followers]
+    @following  = data[:following]
   end
 
   def self.find(username)
     github_user_data = service.user(username)
-    build_user(github_user_data)
+    GithubUser.new(github_user_data)
   end
 
   def orgs
