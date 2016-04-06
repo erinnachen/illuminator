@@ -2,22 +2,20 @@ class UserService
   attr_reader :connection
 
   def initialize
-    @connection = Faraday.new(url: "https://api.github.com")
-    @auth = {client_id: ENV['github_client_id'],
-             client_secret: ENV['github_client_secret']}
+    @_connection = Faraday.new(url: "https://api.github.com")
+    connection.params['client_id']     = ENV['github_client_id']
+    connection.params['client_secret'] = ENV['github_client_secret']
   end
 
   def get(path, page = nil)
-    params = @auth
-    params[:page] = page if page
-    @connection.get(path, params)
+    params = {page: page} if page
+    connection.get(path, params)
   end
 
   def get_starred(path, page = nil)
-    @connection.get do |conn|
+    connection.get do |conn|
       conn.url path
       conn.headers["Accept"] = "application/vnd.github.v3.star+json"
-      conn.params = @auth
       conn.params["page"] = page if page
     end
   end
@@ -57,8 +55,13 @@ class UserService
   end
 
   private
+
+    def connection
+      @_connection
+    end
+
     def parse_response(response)
-      JSON.parse(response.body, object_class: OpenStruct)
+      JSON.parse(response.body, symbolize_names: true)
     end
 
     def get_more_pages?(headers)
