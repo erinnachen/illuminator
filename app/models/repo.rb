@@ -1,6 +1,7 @@
 class Repo
-  attr_reader :name, :updated_at, :description, :star_count, :fork_count, :language, :starred_at, :url
+  attr_reader :name, :updated_at, :description, :star_count, :fork_count, :language, :starred_at, :url, :id
   def initialize(data, starred_at = nil)
+    @id                   = data.id
     @name                 = data.name
     @language             = data.language
     @fork_count           = data.forks_count
@@ -20,5 +21,14 @@ class Repo
         Repo.new(repo_data)
       end
     end
+  end
+
+  def self.find(owner, name)
+    self.parse_from_data(UserService.get_repo("/repos/#{owner}/#{name}"))
+  end
+
+  def star
+    path = "/user/starred/#{owner}/#{name}"
+    UserService.star_repo(self)
   end
 end

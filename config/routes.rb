@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "/auth/github/callback", to: "sessions#create"
   delete "/logout", to: "sessions#destroy", as: "logout"
 
+  post "/repos/:id/star", to: "repos#star", as: "star"
+
   get "/:username/starred", to: "users#show"
   get "/:username", to: "users#show", as: "user"
+
 end
