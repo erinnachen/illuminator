@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
   def show
     @github_user = GithubUser.find(params[:username])
-    # @orgs = @github_user.orgs
-    @repos = @github_user.repos
+    if starred?
+      @repos = @github_user.starred
+    else
+      @repos = @github_user.repos
+    end
   end
 
-  def create
-    #send an API call
-  end
+
+  private
+    def starred?
+      params[:tab] == "starred" || request.fullpath.include?("/starred")
+    end
 end

@@ -35,11 +35,11 @@
                   %path{d:"M7 6H1c-0.55 0-1 0.45-1 1v5h2v3c0 0.55 0.45 1 1 1h2c0.55 0 1-0.45 1-1V12h2V7c0-0.55-0.45-1-1-1z m0 5h-1V9h-1v6H3V9h-1v2H1V7h6v4z m0-8C7 1.34 5.66 0 4 0S1 1.34 1 3s1.34 3 3 3 3-1.34 3-3zM4 5c-1.11 0-2-0.89-2-2S2.89 1 4 1s2 0.89 2 2-0.89 2-2 2z"}
                 Follow
         %nav.tabnav-tabs
-          %a.tabnav-tab.selected{ href:"#", role: "tab" }
+          %a.tabnav-tab.selected{ href:"/#{@github_user.username}?tab=repos", role: "tab" }
             %svg.octicon{"aria-hidden":"true", version: "1.1", viewBox: "0 0 12 16"}
               %path{d:"M4 9h-1v-1h1v1z m0-3h-1v1h1v-1z m0-2h-1v1h1v-1z m0-2h-1v1h1v-1z m8-1v12c0 0.55-0.45 1-1 1H6v2l-1.5-1.5-1.5 1.5V14H1c-0.55 0-1-0.45-1-1V1C0 0.45 0.45 0 1 0h10c0.55 0 1 0.45 1 1z m-1 10H1v2h2v-1h3v1h5V11z m0-10H2v9h9V1z"}
             Repositories
-          %a.tabnav-tab{ href:"#", role: "tab" }
+          %a.tabnav-tab{ href:"/#{@github_user.username}?tab=starred", role: "tab" }
             %svg.octicon{"aria-hidden":"true", version: "1.1", viewBox: "0 0 12 16"}
               %path{d:"M4 9h-1v-1h1v1z m0-3h-1v1h1v-1z m0-2h-1v1h1v-1z m0-2h-1v1h1v-1z m8-1v12c0 0.55-0.45 1-1 1H6v2l-1.5-1.5-1.5 1.5V14H1c-0.55 0-1-0.45-1-1V1C0 0.45 0.45 0 1 0h10c0.55 0 1 0.45 1 1z m-1 10H1v2h2v-1h3v1h5V11z m0-10H2v9h9V1z"}
             Starred
