@@ -3,8 +3,7 @@
   width: 30px;
 }
 
-.navbar-header {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+#contain-navbar {
+  max-width: 980px;
+  margin: 0 auto;
 }
