@@ -44,9 +44,35 @@ class GithubUser
     starred.count
   end
 
+  def gemfile_count
+    repos.reduce(0) do |count, repo|
+      count + add_to_count(repo.has_gemfile?(service))
+    end
+  end
+
+  def gems
+    gem_count = Hash.new(0)
+    repos.each do |repo|
+      gems = repo.get_gems(service)
+      add_gems_to_count(gem_count, gems) if gems
+    end
+    gem_count.sort_by { |_gemname, count| -1*count }
+  end
+
   private
 
     def service
       @_service
+    end
+
+    def add_to_count(contains_gemfile)
+      return 1 if contains_gemfile
+      0
+    end
+
+    def add_gems_to_count(gem_count, gemmmas)
+      gemmmas.each do |gemmma|
+        gem_count[gemmma] += 1
+      end
     end
 end

@@ -2,6 +2,7 @@
   .columns
     .column.one-fourth
       =render partial: "user_info"
+      =link_to "Luminate!", illuminate_path(@github_user.username), class: "btn btn-follow"
     .column.three-fourths
       .tabnav
         - if current_user && !personal_page?(@github_user)

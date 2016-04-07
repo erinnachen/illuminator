@@ -1,0 +1,10 @@
+%nav.tabnav-tabs
+  %a.tabnav-tab{ href:"/#{@github_user.username}?tab=repos", role: "tab" }
+    = render partial: "shared/svgs/repository_svg"
+    Repositories
+  %a.tabnav-tab{ href:"/#{@github_user.username}?tab=starred", role: "tab" }
+    = render partial: "shared/svgs/repository_svg"
+    Starred
+  %a.tabnav-tab.selected{ href:"/#{@github_user.username}/illuminate", role: "tab" }
+    = render partial: "shared/svgs/stream_svg"
+    Illuminations

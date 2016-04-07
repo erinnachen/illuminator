@@ -58,7 +58,23 @@ class UserService
     starred.flatten
   end
 
+  def has_gemfile?(repo)
+    response = connection.get do |conn|
+      conn.url "/repos/#{repo.owner}/#{repo.name}/contents/Gemfile.lock"
+      conn.headers["Accept"] = "application/vnd.github.v3.raw+json"
+    end
+    response.status == 200
+  end
 
+  def get_gems(repo)
+    response = connection.get do |conn|
+      conn.url "/repos/#{repo.owner}/#{repo.name}/contents/Gemfile.lock"
+      conn.headers["Accept"] = "application/vnd.github.v3.raw+json"
+    end
+    if response.status == 200
+      parse_raw_gemfile(response.body)
+    end
+  end
 
     private
     def connection
@@ -87,5 +103,14 @@ class UserService
         repo[:starred_at] = star_data[:starred_at]
         repo
       }
+    end
+
+    def parse_raw_gemfile(response_body)
+      gemlines = response_body.split("\n")
+      end_index = gemlines.index { |line| line == "PLATFORMS" } ||
+                  gemlines.index { |line| line == "DEPENDENCIES" }
+      gemlines[3..end_index-2].map {|line|
+        line.strip.split(" ")[0]
+      }.uniq
     end
 end

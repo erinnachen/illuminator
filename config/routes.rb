@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/repos/:id/star", to: "repos#star", as: "star"
 
   get "/:username/starred", to: "users#show"
+  get "/:username/illuminate", to: "users#illuminate", as: "illuminate"
   get "/:username", to: "users#show", as: "user"
 
 end

@@ -1,0 +1,15 @@
+.page-content.container
+  .columns
+    .column.one-fourth
+      =render partial: "user_info"
+    .column.three-fourths
+      .tabnav
+        - if current_user && !personal_page?(@github_user)
+          = render partial: "follow_button"
+        = render partial: "shared/illuminate_tabs"
+      .gem-meta.border-bottom
+        %h2= "Total Repos: #{@github_user.repos.count}   Repos with a Gemfile: #{@github_user.gemfile_count}"
+      %h2 Gems listed from most used to least
+      %ul.gem-list
+        - @github_user.gems.each do |gemname, count|
+          %h3= "#{gemname} (#{count})"
