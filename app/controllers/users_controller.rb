@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def show
     @github_user = GithubUser.find(params[:username])
-    if starred?
-      @repos = @github_user.starred
-    else
-      @repos = @github_user.repos
-    end
+    # if starred?
+    #   @repos = @github_user.starred
+    # else
+    #   @repos = @github_user.repos
+    # end
   end
 
 

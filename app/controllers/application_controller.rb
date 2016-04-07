@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :require_user
+  # helper_method :personal_page?
+  # helper_method :starred_tab?
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
