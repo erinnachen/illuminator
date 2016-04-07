@@ -1,6 +1,9 @@
 .jumbotron {
-  background-image: url("home-hero.jpg");
+  background-image: image_url("home-hero.jpg");
   min-height: 400px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width:100%;
 }
 
 h1 {

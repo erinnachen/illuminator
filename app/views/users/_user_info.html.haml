@@ -1,0 +1,17 @@
+= image_tag "#{@github_user.avatar}",
+            class: "user-avatar rounded-2 user-page",
+            alt: "@#{@github_user.username}"
+%h1.card-names.my-3
+  .card-fullname= @github_user.name
+  .card-username= @github_user.username
+.card-stats.border-top.border-bottom.border-gray-light.mb-3.py-3
+  %a.card-stat{ href: "/#{@github_user.username}/followers" }
+    %strong.card-stat-count.d-block=@github_user.followers
+    %span.text-muted Followers
+  %a.card-stat{ href: "/#{@github_user.username}/starred" }
+    %strong.card-stat-count.d-block= @github_user.starred_count
+    %span.text-muted Starred
+  %a.card-stat{ href: "/#{@github_user.username}/following" }
+    %strong.card-stat-count.d-block=@github_user.following
+    %span.text-muted Following
+= render partial: "orgs/orgs"

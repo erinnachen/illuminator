@@ -1,0 +1,19 @@
+.repo-list-item
+  .repo-list-stats
+    %span= repo.language
+    %a.repo-list-stat-item.tooltipped{href: "#"}
+      = render partial: "shared/svgs/star_svg"
+      = repo.star_count
+    %a.repo-list-stat-item.tooltipped{href: "#"}
+      = render partial: "shared/svgs/gitbranch_svg"
+      = repo.fork_count
+  %h3.repo-list-name
+    %a{href:"#{repo.url}"}="#{repo.name}"
+
+  - if repo.description
+    %p.repo-list-description= repo.description
+
+  - if starred_tab?
+    %p.repo-list-meta="Starred on #{repo.starred_at.strftime("%B %-d, %Y")}"
+  - else
+    %p.repo-list-meta="Updated on #{repo.updated_at.strftime("%B %-d, %Y")}"

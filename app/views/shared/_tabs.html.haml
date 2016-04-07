@@ -1,0 +1,22 @@
+%nav.tabnav-tabs
+  -if starred_tab?
+    %a.tabnav-tab{ href:"/#{@github_user.username}?tab=repos", role: "tab" }
+      = render partial: "shared/svgs/repository_svg"
+      Repositories
+  -else
+    %a.tabnav-tab.selected{ href:"/#{@github_user.username}?tab=repos", role: "tab" }
+      = render partial: "shared/svgs/repository_svg"
+      Repositories
+
+  -if starred_tab?
+    %a.tabnav-tab.selected{ href:"/#{@github_user.username}?tab=starred", role: "tab" }
+      = render partial: "shared/svgs/repository_svg"
+      Starred
+  - else
+    %a.tabnav-tab{ href:"/#{@github_user.username}?tab=starred", role: "tab" }
+      = render partial: "shared/svgs/repository_svg"
+      Starred
+
+  %a.tabnav-tab{ href:"#", role: "tab" }
+    = render partial: "shared/svgs/stream_svg"
+    Public Activity
