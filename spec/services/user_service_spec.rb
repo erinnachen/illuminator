@@ -33,10 +33,10 @@ describe UserService do
         starred = service.starred("josevalim")
         star = starred.first
 
-        expect(star[:repo][:name]).to eq "hex"
+        expect(star[:name]).to eq "hex"
         expect(star[:starred_at]).to eq "2014-04-25T20:15:58Z"
-        expect(star[:repo][:html_url]).to eq "https://github.com/hexpm/hex"
-        expect(star[:repo][:fork]).to eq false
+        expect(star[:html_url]).to eq "https://github.com/hexpm/hex"
+        expect(star[:fork]).to eq false
         expect(starred.count).to eq 221
       end
     end
