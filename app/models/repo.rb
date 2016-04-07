@@ -13,6 +13,14 @@ class Repo
     @url                  = data[:html_url]
   end
 
+  def has_gemfile?(service)
+    service.has_gemfile?(self)
+  end
+
+  def get_gems(service)
+    service.get_gems(self)
+  end
+
   # def self.find(owner, name)
   #   self.parse_from_data(UserService.get_repo("/repos/#{owner}/#{name}"))
   # end
