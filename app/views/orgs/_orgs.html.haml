@@ -1,0 +1,4 @@
+- if @github_user.orgs.count > 0
+  .clearfix
+    %h3 Organizations
+    = render partial: "orgs/org", collection: @github_user.orgs

@@ -5,10 +5,4 @@ class Org
     @avatar = data[:avatar_url]
     @url = "https://github.com/#{data[:login]}"
   end
-
-  def self.parse_from_data(data)
-    data.map do |org_data|
-      Org.new(org_data)
-    end
-  end
 end
