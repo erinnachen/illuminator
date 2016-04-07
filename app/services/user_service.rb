@@ -1,10 +1,10 @@
 class UserService
   attr_reader :connection
 
-  def initialize(user = nil)
+  def initialize(access_token)
     @_connection = Faraday.new(url: "https://api.github.com")
-    connection.params['client_id']     = ENV['github_client_id']
-    connection.params['client_secret'] = ENV['github_client_secret']
+    @_access_token = access_token
+    connection.params['access_token'] = access_token
   end
 
   def get(path, page = nil)
@@ -59,11 +59,16 @@ class UserService
   end
 
 
+
+    private
     def connection
       @_connection
     end
 
-    private
+    def access_token
+      @_access_token
+    end
+
     def parse_response(response)
       JSON.parse(response.body, symbolize_names: true)
     end

@@ -4,7 +4,7 @@ describe UserService do
   context "#user(username)" do
     it "returns information about a user" do
       VCR.use_cassette("user_service#user") do
-        service = UserService.new
+        service = UserService.new(ENV['oauth_token'])
         user = service.user("erinnachen")
 
         expect(user[:login]).to eq "erinnachen"
@@ -17,7 +17,7 @@ describe UserService do
   context "#orgs(username)" do
     it "returns the organizations the user belongs to" do
       VCR.use_cassette("user_service#orgs") do
-        service = UserService.new
+        service = UserService.new(ENV['oauth_token'])
         orgs = service.orgs("josevalim")
         org = orgs.first
         expect(org[:login]).to eq "rails"
@@ -29,7 +29,7 @@ describe UserService do
   context "#starred(username)" do
     it "returns the repositories the user starred" do
       VCR.use_cassette("user_service#starred") do
-        service = UserService.new
+        service = UserService.new(ENV['oauth_token'])
         starred = service.starred("josevalim")
         star = starred.first
 
@@ -45,7 +45,7 @@ describe UserService do
   context "#repos(username)" do
     it "returns the repositories of the user" do
       VCR.use_cassette("user_service#repos") do
-        service = UserService.new
+        service = UserService.new(ENV['oauth_token'])
         repos = service.repos("erinnachen")
         repo = repos.first
 
