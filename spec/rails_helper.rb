@@ -59,17 +59,17 @@ module SpecHelpers
   def stub_omniauth
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-      uid: "1234",
+      uid: "12789537",
       provider: 'github',
       extra: {
         raw_info: {
-          name: "Horace",
-          login: "worace",
-          avatar_url: "https://avatars1.githubusercontent.com/u/1227440"
+          name: "Erinna Chen",
+          login: "erinnachen",
+          avatar_url: "https://avatars1.githubusercontent.com/u/12789537"
         }
       },
       credentials: {
-        token: "pizza"
+        token: ENV['oauth_token']
       }
     })
   end

@@ -4,7 +4,7 @@ describe Repo do
   it "should create with the appropriate fields" do
     repo = Repo.new(repo_data)
     expect(repo.name).to eq "all_the_coins"
-    expect(repo.owner.username).to eq "erinnachen"
+    expect(repo.owner).to eq "erinnachen"
     expect(repo.language).to eq "Ruby"
     expect(repo.fork_count).to eq 5
     expect(repo.star_count).to eq 8

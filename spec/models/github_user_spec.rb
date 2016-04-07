@@ -4,7 +4,7 @@ describe GithubUser do
   context ".find(username)" do
     it "returns a github user" do
       VCR.use_cassette "githubuser.find" do
-        user = GithubUser.find("erinnachen")
+        user = GithubUser.find("erinnachen", ENV['oauth_token'])
 
         expect(user).to be_kind_of GithubUser
         expect(user.name).to eq "Erinna Chen"
@@ -17,7 +17,7 @@ describe GithubUser do
   context "#orgs" do
     it "returns a collection of orgs the user is part of" do
       VCR.use_cassette "githubuser#orgs" do
-        user = GithubUser.find("josevalim")
+        user = GithubUser.find("josevalim", ENV['oauth_token'])
         orgs = user.orgs
         org = orgs.first
 
@@ -33,7 +33,7 @@ describe GithubUser do
   context "#repos" do
     it "returns a collection of repos the user owns" do
       VCR.use_cassette "githubuser#repos" do
-        user = GithubUser.find("erinnachen")
+        user = GithubUser.find("erinnachen", ENV['oauth_token'])
         repos = user.repos
         repo = repos.first
 
@@ -41,7 +41,7 @@ describe GithubUser do
         expect(repo.name).to eq "web_guesser"
         expect(repo.language).to eq "Ruby"
         expect(repo.url).to eq "https://github.com/erinnachen/web_guesser"
-        expect(repo.owner.username).to eq "erinnachen"
+        expect(repo.owner).to eq "erinnachen"
         expect(repos.count).to eq 41
       end
     end
@@ -50,7 +50,7 @@ describe GithubUser do
   context "#starred" do
     it "returns a collection of repos the user starred" do
       VCR.use_cassette "githubuser#starred" do
-        user = GithubUser.find("dankogai")
+        user = GithubUser.find("dankogai", ENV['oauth_token'])
         starred = user.starred
         star = starred.first
 
@@ -58,7 +58,7 @@ describe GithubUser do
         expect(star.name).to eq "extract_jawp_names"
         expect(star.language).to eq "Perl"
         expect(star.url).to eq "https://github.com/hiroshi-manabe/extract_jawp_names"
-        expect(star.owner.username).to eq "hiroshi-manabe"
+        expect(star.owner).to eq "hiroshi-manabe"
         expect(star.starred_at.strftime("%B %-d, %Y")).to eq "March 1, 2016"
         expect(starred.count).to eq 46
         expect(user.starred_count).to eq 46
